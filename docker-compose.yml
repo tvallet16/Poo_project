@@ -21,11 +21,11 @@ services:
     depends_on:
       - postgres
 
-  composer:
-    image: composer
-    volumes:
-      - ./src:/app
-    command: install
+#  composer:
+#    image: composer
+#    volumes:
+#      - ./src:/app
+#    command: install
 
   postgres:
     image: postgres:alpine
