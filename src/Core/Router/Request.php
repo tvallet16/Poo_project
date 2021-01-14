@@ -10,7 +10,7 @@ class Request
 
     public function __construct()
     {
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = '/'.trim($_SERVER['REQUEST_URI'], '/');
         $this->method = $this->findRequestMethod();
         $this->body = $this->findRequestBody();
     }
