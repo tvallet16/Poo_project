@@ -13,7 +13,9 @@
 <?php foreach ($recipes as $recipe): ?>
   <article>
     <header>
-      <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
+      <a href="/recipes/<?= $recipe->getId(); ?>">
+        <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
+      </a>
       <p><?= $recipe->getCreationDate(); ?></p>
     </header>
     <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
