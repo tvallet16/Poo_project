@@ -72,6 +72,8 @@ class Router
                 array_unshift($params, $this->request);
 
                 $this->invoke($route['dispatcher'], $params);
+
+                return;
             }
         }
     }
