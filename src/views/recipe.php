@@ -11,10 +11,10 @@
 <h1>Les recettes de Tonton</h1>
 <article>
   <header>
-    <h3><?= htmlspecialchars($recipe['title']); ?></h3>
-    <p><?= $recipe['creation_date']; ?></p>
+    <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
+    <p><?= $recipe->getCreationDate(); ?></p>
   </header>
-  <p><?= nl2br(htmlspecialchars($recipe['content'])); ?></p>
+  <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
 </article>
 </body>
 </html>
