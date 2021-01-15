@@ -47,4 +47,9 @@ class Request
     {
         return $this->method;
     }
+
+    public function getBody(): ?array
+    {
+        return $this->body;
+    }
 }

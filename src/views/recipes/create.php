@@ -10,12 +10,21 @@
 <body>
 <a href="/recipes">⬅️ Retour aux recettes</a>
 <h1>Les recettes de Tonton</h1>
-<article>
-  <header>
-    <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
-    <p><?= $recipe->getCreationDate(); ?></p>
-  </header>
-  <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
-</article>
+<h3>Nouvelle recette</h3>
+<form action="/recipes" method="POST">
+  <div>
+    <label>
+      Titre
+      <input name="title" type="text">
+    </label>
+  </div>
+  <div>
+    <label>
+      Contenu
+      <textarea name="content" id="" cols="30" rows="10"></textarea>
+    </label>
+  </div>
+  <input type="submit" value="Valider">
+</form>
 </body>
 </html>
