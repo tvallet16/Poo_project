@@ -36,3 +36,30 @@ docker-compose up
 ```
 
 You can now access the application on **http://localhost**
+
+### First run
+
+In the first run of the project, you may have to setup the database
+
+To do so, you'll have to connect to the postgres container
+
+```sh
+docker-compose exec postgres psql -U postgres 
+```
+
+Then when you're in something that's looks like `postgres=#` you should be able to run queries.
+
+First create a `recipes` table
+
+```sql
+create table if not exists recipes
+(
+    id serial not null,
+    title varchar(255),
+    content text,
+    creation_date timestamp default now(),
+    constraint pk_recipes primary key (id)
+);
+```
+
+And add data as you wish ! (I suggest a lorem ipsum for the content column see: https://fr.lipsum.com/)
