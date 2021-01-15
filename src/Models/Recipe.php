@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Core\Database\Model;
+
 class Recipe extends Model
 {
     private int $id;
     private string $title;
     private string $content;
     private string $creation_date;
+
+    protected array $fillable = ['title', 'content'];
 
     public function getId(): int
     {

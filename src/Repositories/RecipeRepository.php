@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use PDO;
-use App\Core\DB;
+use App\Core\Database\DB;
 use App\Models\Recipe;
 
 class RecipeRepository
@@ -13,19 +13,12 @@ class RecipeRepository
      */
     public function findAll(): array
     {
-        $request = DB::query('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes');
-
-        return $request->fetchAll(PDO::FETCH_CLASS, Recipe::class);
+        return Recipe::all();
     }
 
     public function find(int $id): Recipe
     {
-        $request
-            = DB::prepare('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes WHERE id = :id');
-        $request->bindValue(':id', $id, PDO::PARAM_INT);
-        $request->execute();
-
-        return $request->fetchObject(Recipe::class);
+        return Recipe::find($id);
     }
 
     /**
@@ -40,10 +33,6 @@ class RecipeRepository
 
     public function create(Recipe $recipe): bool
     {
-        $request = DB::prepare('INSERT INTO recipes (title, content) VALUES (:title, :content)');
-        $request->bindValue(':title', $recipe->getTitle());
-        $request->bindValue(':content', $recipe->getContent());
-
-        return $request->execute();
+        return $recipe->save();
     }
 }
