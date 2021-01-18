@@ -8,7 +8,17 @@ use App\Models\Recipe;
 
 class RecipeRepository
 {
-    public function find(int $id)
+    /**
+     * @return Recipe[]
+     */
+    public function findAll(): array
+    {
+        $request = DB::query('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes');
+
+        return $request->fetchAll(PDO::FETCH_CLASS, Recipe::class);
+    }
+
+    public function find(int $id): Recipe
     {
         $request
             = DB::prepare('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes WHERE id = :id');
@@ -18,16 +28,21 @@ class RecipeRepository
         return $request->fetchObject(Recipe::class);
     }
 
-    public function findLast5()
+    /**
+     * @return Recipe[]
+     */
+    public function findLast5(): array
     {
-        $request = DB::query('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes ORDER BY creation_date LIMIT 5 OFFSET 0');
+        $request = DB::query('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes ORDER BY creation_date DESC LIMIT 5 OFFSET 0');
 
         return $request->fetchAll(PDO::FETCH_CLASS, Recipe::class);
     }
-    public function findAll()
-    {
-        $request = DB::query('SELECT id, title, content, TO_CHAR(creation_date, \'dd/mm/yyyy à HH24:MI:SS\') as creation_date FROM recipes ORDER BY creation_date OFFSET 0');
 
-        return $request->fetchAll(PDO::FETCH_CLASS, Recipe::class);
+    public function create(Recipe $recipe): bool
+    {
+        $request = DB::prepare('INSERT INTO recipes (title, content) VALUES (:title, :content)');
+        $request->bindValue(':title', $recipe->getTitle());
+        $request->bindValue(':content', $recipe->getContent());
+        return $request->execute();
     }
 }
