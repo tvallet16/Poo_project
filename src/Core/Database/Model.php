@@ -80,9 +80,7 @@ class Model
 
     public static function last(int $amount, int $from = 0)
     {
-        // Comme je veux tout récupérer, je ne précise pas de select
-        return static::orderBy(['creation_date' => 'DESC'])->max($amount, $from)
-            ->get();
+        return static::select(['id', 'title', 'content', 'creation_date'])->orderBy(['creation_date'=> 'DESC'])->max($amount, $from)->get();
     }
 
     public function save()

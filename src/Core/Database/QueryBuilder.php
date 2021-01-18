@@ -85,16 +85,15 @@ class QueryBuilder
 
     public function orderBy(array $columns): self
     {
-        $this->orderByColumns = $columns;
+        $this->orderByColumns=$columns;
 
         return $this;
     }
 
     public function max(int $limit, int $offset = 0): self
     {
-        $this->limit = $limit;
-        $this->offset = $offset;
-
+        $this->limit=$limit;
+        $this->offset=$offset;
         return $this;
     }
 
@@ -111,30 +110,28 @@ class QueryBuilder
             $whereString .= 'WHERE '.$whereCondition['query'];
             $params = [$whereCondition['column'] => $whereCondition['value']];
         }
+        // $orderBY= 'ORDER BY ';
+        // foreach ($this->orderByColumns as $key => $value) {
+        //     $orderbyCondition=$key.' '.$value;
+        //     $orderBY .= $orderbyCondition.', ';
+            
+        // }
 
         if (isset($this->orderByColumns)) {
-            $orderBy = ' ORDER BY '.implode(
-                    ', ',
-                    array_map(
-                        function ($value, $key) {
-                            return $key.' '.$value;
-                        },
-                        $this->orderByColumns,
-                        array_keys($this->orderByColumns)
-                    )
-                );
+            // pareil que foreach au dessu mais avec une fonction anonyme
+            $orderBy = 'ORDER BY '.implode(', ' , array_map(function ($value, $key){
+            return $key.' '.$value;
+            }, $this->orderByColumns, array_keys($this->orderByColumns) ));
         }
 
-        // $query = $select.' '.$from.' '.$whereString;
-        $query = sprintf('%s %s %s', $select, $from, $whereString);
+        $query = $select.' '.$from.' '.$whereString;
         if (isset($orderBy)) {
-            $query .= $orderBy;
+            $query .=' '.$orderBy;
+            
         }
+
         if (isset($this->limit)) {
-            // %d fait référence à un entier
-            // contrairement à %s qui fait référence à une string
-            // En MySQL: LIMIT %d, %d
-            $query .= sprintf(' LIMIT %d OFFSET %d', $this->limit, $this->offset);
+            $query .=' LIMIT '.$this->limit.' OFFSET '.$this->offset;
         }
 
         return $this->executeQuery($query, $params);

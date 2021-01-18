@@ -15,7 +15,7 @@
     <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
     <p><?= $recipe->getCreationDate(); ?></p>
   </header>
-  <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
+  <p><?=nl2br(htmlspecialchars($recipe->getContent())); ?></p>
 </article>
 </body>
 </html>
