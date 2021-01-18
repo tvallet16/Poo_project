@@ -54,9 +54,9 @@ class QueryBuilder
         //      ],
         // ]
         $whereCondition = [
-            'query' => sprintf('%s %s :%1$s', $column, $comparator),
+            'query'  => sprintf('%s %s :%1$s', $column, $comparator),
             'column' => $column,
-            'value' => $value,
+            'value'  => $value,
         ];
         if ($chain !== null) {
             $whereCondition['chain'] = $chain;
@@ -85,14 +85,15 @@ class QueryBuilder
 
     public function orderBy(array $columns): self
     {
-        // ...
+        $this->orderByColumns = $columns;
 
         return $this;
     }
 
     public function max(int $limit, int $offset = 0): self
     {
-        // ...
+        $this->limit = $limit;
+        $this->offset = $offset;
 
         return $this;
     }
@@ -111,7 +112,30 @@ class QueryBuilder
             $params = [$whereCondition['column'] => $whereCondition['value']];
         }
 
-        $query = $select.' '.$from.' '.$whereString;
+        if (isset($this->orderByColumns)) {
+            $orderBy = ' ORDER BY '.implode(
+                    ', ',
+                    array_map(
+                        function ($value, $key) {
+                            return $key.' '.$value;
+                        },
+                        $this->orderByColumns,
+                        array_keys($this->orderByColumns)
+                    )
+                );
+        }
+
+        // $query = $select.' '.$from.' '.$whereString;
+        $query = sprintf('%s %s %s', $select, $from, $whereString);
+        if (isset($orderBy)) {
+            $query .= $orderBy;
+        }
+        if (isset($this->limit)) {
+            // %d fait référence à un entier
+            // contrairement à %s qui fait référence à une string
+            // En MySQL: LIMIT %d, %d
+            $query .= sprintf(' LIMIT %d OFFSET %d', $this->limit, $this->offset);
+        }
 
         return $this->executeQuery($query, $params);
     }
@@ -123,9 +147,10 @@ class QueryBuilder
         $fillables = $this->model->getFillable();
         $schema = ' ('.implode(', ', $fillables).')';
         $attributes = [];
-        array_walk($fillables, function ($attribute) use (&$attributes, $model) {
-            $attributes[$attribute] = $model->$attribute;
-        });
+        array_walk($fillables,
+            function ($attribute) use (&$attributes, $model) {
+                $attributes[$attribute] = $model->$attribute;
+            });
         $values = ' VALUES (:'.implode(', :', $fillables).')';
 
         $query = $insert.$schema.$values;

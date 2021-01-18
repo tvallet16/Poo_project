@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Core\View;
-use App\Repositories\RecipeRepository;
+use App\Models\Recipe;
 
 class PageController
 {
     public function homepage()
     {
-        $recipes = (new RecipeRepository())->findLast5();
+        $recipes = Recipe::last(3);
         new View('homepage', compact('recipes'));
     }
 }

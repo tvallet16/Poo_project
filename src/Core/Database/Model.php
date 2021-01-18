@@ -24,6 +24,7 @@ class Model
         $callingClass = explode('\\', $callingClass);
         // ['App', 'Models', 'Recipe']
         $callingClass = array_pop($callingClass);
+
         // Recipe
 
         return strtolower($callingClass).'s'; // recipes
@@ -73,12 +74,15 @@ class Model
 
     public static function find(int $id)
     {
-        return static::select(['title', 'content', 'creation_date'])->where('id', '=', $id)->first();
+        return static::select(['title', 'content', 'creation_date'])
+            ->where('id', '=', $id)->first();
     }
 
     public static function last(int $amount, int $from = 0)
     {
-        // ...
+        // Comme je veux tout récupérer, je ne précise pas de select
+        return static::orderBy(['creation_date' => 'DESC'])->max($amount, $from)
+            ->get();
     }
 
     public function save()
