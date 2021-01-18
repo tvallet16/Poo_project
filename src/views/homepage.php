@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,6 +19,11 @@
   </style>
 </head>
 <body>
+<?php if(isset($_SESSION['checkLog'])):  ?>
+  <a href="/logout">Se déconnecter</a>
+<?php else:?>
+  <a href="/login">Se connecter</a>
+<?php endif ?>
 <h1>Les recettes de Tonton</h1>
 <p>Dernières recettes : <a href="/recipes">👀 Voir toutes les recettes</a>
 <section>

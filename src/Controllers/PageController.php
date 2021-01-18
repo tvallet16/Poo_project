@@ -12,4 +12,8 @@ class PageController
         $recipes = (new RecipeRepository())->findLast5();
         new View('homepage', compact('recipes'));
     }
+    public function loginView()
+    {
+        new View('login');
+    }
 }

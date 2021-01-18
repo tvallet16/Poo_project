@@ -37,4 +37,6 @@ class RecipesController
         $recipe = (new RecipeRepository())->find($id);
         new View('recipes/show', compact('recipe')); // ['recipe' => $recipe]
     }
+    
+    
 }
