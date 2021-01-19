@@ -54,9 +54,9 @@ class QueryBuilder
         //      ],
         // ]
         $whereCondition = [
-            'query' => sprintf('%s %s :%1$s', $column, $comparator),
+            'query'  => sprintf('%s %s :%1$s', $column, $comparator),
             'column' => $column,
-            'value' => $value,
+            'value'  => $value,
         ];
         if ($chain !== null) {
             $whereCondition['chain'] = $chain;
@@ -144,9 +144,10 @@ class QueryBuilder
         $fillables = $this->model->getFillable();
         $schema = ' ('.implode(', ', $fillables).')';
         $attributes = [];
-        array_walk($fillables, function ($attribute) use (&$attributes, $model) {
-            $attributes[$attribute] = $model->$attribute;
-        });
+        array_walk($fillables,
+            function ($attribute) use (&$attributes, $model) {
+                $attributes[$attribute] = $model->$attribute;
+            });
         $values = ' VALUES (:'.implode(', :', $fillables).')';
 
         $query = $insert.$schema.$values;
