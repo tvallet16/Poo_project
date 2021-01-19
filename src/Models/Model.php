@@ -18,7 +18,4 @@ class Model
             $this->$setter($value);
         }
     }
-    public function last(){
-        
-    }
 }

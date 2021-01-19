@@ -12,4 +12,8 @@ class PageController
         $recipes = Recipe::last(3);
         new View('homepage', compact('recipes'));
     }
+    public function loginView()
+    {
+        new View('login');
+    }
 }

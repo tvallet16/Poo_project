@@ -35,4 +35,6 @@ class RecipesController
         $recipe = Recipe::find($id);
         new View('recipes/show', compact('recipe')); // ['recipe' => $recipe]
     }
+    
+    
 }
