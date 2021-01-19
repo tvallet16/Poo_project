@@ -25,20 +25,19 @@
       <article>
         <img src="img/toc.png" alt="">
         <h1>Un chef à la maison</h1>
-        <a href="">Connexion</a>
+        <div>
+          <?php if(isset($_SESSION['checkLog'])):  ?>
+          <a href="/logout">déconnexion</a>
+          <a href="/">Ajouter une recette</a>
+          <?php else:?>
+          <a href="/login">connection</a>
+          <?php endif ?>
+          <a href="#">s'inscrire</a>
+        </div>
       </article>
-      
     </div>
-  </header>
-    
+
 <p>Mes 3 dernières recettes : <a href="/recipes">👀 Voir toutes les recettes</a>
-<?php if(isset($_SESSION['checkLog'])):  ?>
-  <a href="/logout">Se déconnecter</a>
-<?php else:?>
-  <a href="/login">Se connecter</a>
-<?php endif ?>
-<h1>Les recettes de Tonton</h1>
-<p>Dernières recettes : <a href="/recipes">👀 Voir toutes les recettes</a>
 <section>
     <?php foreach ($recipes as $recipe): ?>
       <article>
@@ -54,3 +53,6 @@
 </section>
 </body>
 </html>
+
+
+
