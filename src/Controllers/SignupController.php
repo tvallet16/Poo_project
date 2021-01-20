@@ -12,7 +12,7 @@ use App\Models\User;
 
 class SignupController{
     public function createUser(Request $request){
-        if ($request->getBody()['psw']===$request->getBody()['vPsw']) {
+        if ($request->getBody()['psw']===$request->getBody()['vPsw'] && $request->getBody()['psw']!=null) {
             $user = new User();
             $user->username = $request->getBody()['username'];
             $user->passeword = md5($request->getBody()['psw']);

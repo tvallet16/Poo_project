@@ -5,26 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="header">
-        <article>
-          <img src="img/toc.png" alt="">
-          <h1>Un chef à la maison</h1>
-          <div>
-            <?php if(isset($_SESSION['checkLog'])):  ?>
-            <a href="/logout">déconnexion</a>
-            <a href="/">Ajouter une recette</a>
-            <?php else:?>
-            <a href="/login">connection</a>
-            <?php endif ?>
-            <a href="#">s'inscrire</a>
-          </div>
-        </article>
-      </div>
+<?php include_once './src/templates/header.php'?>
+
   <div class="container">
     <div class="connexion">
       <h1>Ce connecter au panneau administrateur</h1>

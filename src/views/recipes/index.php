@@ -6,35 +6,17 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mon carnet de viennoiseries</title>
+  <title>Un chef à la maison</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="header">
-      <article>
-        <img src="img/toc.png" alt="">
-        <h1>Un chef à la maison</h1>
-        <div>
-          <?php if(isset($_SESSION['checkLog'])):  ?>
-          <a href="/logout">déconnexion</a>
-          <a href="/">Ajouter une recette</a>
-          <?php else:?>
-          <a href="/login">connection</a>
-          <?php endif ?>
-          <a href="#">s'inscrire</a>
-        </div>
-      </article>
-  </div>
+<?php include_once './src/templates/header.php'?>
 
-<a href="/">⬅️ Retour à la page d'accueil</a>
-
- <?php if(isset($_SESSION['checkLog'])):  ?>
-
-  <a href="/recipes/create" role="button">➕ Nouvelle recette</a>
-
-<?php endif ?>
+<div class="all">
+  <a class="all" href="/">⬅️ Retour à la page d'accueil</a>
+</div>
 
 <?php foreach ($recipes as $recipe): ?>
   <article class="recipe">

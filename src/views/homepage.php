@@ -21,26 +21,13 @@
   </style>
 </head>
 <body>
-    <div class="header">
-      <article>
-        <img src="img/toc.png" alt="">
-        <h1>Un chef à la maison</h1>
-        <div>
-          <?php if(isset($_SESSION['checkLog'])):  ?>
-            <a href="/logout">déconnexion</a>
-            <a href="/">Ajouter une recette</a>
-          <?php else:?>
-            <a href="/login">connection</a>
-          <?php endif ?>
-          <a href="/signup">s'inscrire</a>
-        </div>
-      </article>
-    </div>
-
-<p>Mes 3 dernières recettes : <a href="/recipes">👀 Voir toutes les recettes</a>
+<?php include_once './src/templates/header.php'?>
+  <div class="all">
+    <p >Mes 3 dernières recettes : <a  href="/recipes">👀 Voir toutes les recettes</a>
+  </div>
 <section>
     <?php foreach ($recipes as $recipe): ?>
-      <article>
+      <article class="recipe">
         <header>
           <a href="/recipes/<?= $recipe->getId(); ?>">
             <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
