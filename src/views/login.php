@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
@@ -17,11 +17,11 @@
           <div>
             <?php if(isset($_SESSION['checkLog'])):  ?>
             <a href="/logout">Déconnexion</a>
-            <a href="/" class="recipeB">Ajouter une recette</a>
+            <a href="/recipes/create" class="recipeB">Ajouter une recette</a>
             <?php else:?>
             <a href="/login">Connection</a>
-            <?php endif ?>
             <a href="#">S'inscrire</a>
+            <?php endif ?>
           </div>
         </article>
       </div>

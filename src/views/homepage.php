@@ -29,7 +29,7 @@
         <div>
           <?php if(isset($_SESSION['checkLog'])):  ?>
             <a href="/logout">Déconnexion</a>
-            <a href="/" class="recipeB">Ajouter une recette</a>
+            <a href="/recipes/create" class="recipeB">Ajouter une recette</a>
           <?php else:?>
             <a href="/login">Connection</a>
             <a href="/signup">S'inscrire</a>
@@ -38,10 +38,12 @@
       </article>
     </div>
 
-<p>Mes 3 dernières recettes : <a href="/recipes">👀 Voir toutes les recettes</a>
+  <div class="all">
+    <p >Mes 3 dernières recettes : <a  href="/recipes">👀 Voir toutes les recettes</a>
+  </div>
 <section>
     <?php foreach ($recipes as $recipe): ?>
-      <article>
+      <article class="recipe">
         <header>
           <a href="/recipes/<?= $recipe->getId(); ?>">
             <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
