@@ -18,12 +18,12 @@
         <h1>Un chef à la maison</h1>
         <div>
           <?php if(isset($_SESSION['checkLog'])):  ?>
-          <a href="/logout">déconnexion</a>
-          <a href="/">Ajouter une recette</a>
+          <a href="/logout">Déconnexion</a>
+          <a href="/" class="recipeB">Ajouter une recette</a>
           <?php else:?>
-          <a href="/login">connection</a>
+          <a href="/login">Connection</a>
           <?php endif ?>
-          <a href="#">s'inscrire</a>
+          <a href="#">S'inscrire</a>
         </div>
       </article>
   </div>

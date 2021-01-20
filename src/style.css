@@ -13,7 +13,7 @@
 
 .header article {
   height: 100px;
-  width: 500px;
+  width: 700px;
   padding-top: 4em;
   margin-left: 12em;
   display: flex;
@@ -21,22 +21,24 @@
 }
 
 .header article div {
+  display: flex;
   flex-direction: row;
-  margin-top: 30px;
-  margin-left: -17px;
+  margin-top: -22px;
+  margin-left: -50px;
 }
 
 .header article a {
   font-family: 'Yusei Magic', sans-serif;
-  height: 60px;
-  width: 150px;
+  height: 35px;
+  width: 120px;
   text-align: center;
   border: solid white 1px;
   border-radius: 7px 7px 7px 7px;
   font-size: 20px;
   color: white;
+  padding-top: 3px;
   margin-top: 40px;
-  margin-left: 10px;
+  margin-left: 13px;
   text-decoration: none;
   padding: 2px 20px 2px 20px;
 }
@@ -44,6 +46,10 @@
 .header article a:hover {
   background-color: rgba(240, 112, 43, 0.331);
   transition: 0.3s;
+}
+
+.header article .recipeB {
+  width: 200px;
 }
 
 .header article h1 {
