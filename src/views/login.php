@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
 <?php include_once './src/templates/header.php'?>
@@ -28,5 +29,7 @@
       </form>
     </div>
   </div>
+  <?php include_once './src/templates/footer.php'?>
+
 </body>
 </html>

@@ -14,20 +14,22 @@
 <body>
 <?php include_once './src/templates/header.php'?>
 
-<div class="all">
-  <a class="all" href="/">⬅️ Retour à la page d'accueil</a>
-</div>
+  <div class="all">
+    <a class="all" href="/">⬅️ Retour à la page d'accueil</a>
+  </div>
 
-<?php foreach ($recipes as $recipe): ?>
-  <article class="recipe">
-    <header>
-      <a href="/recipes/<?= $recipe->getId(); ?>">
-        <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
-      </a>
-      <p><?= $recipe->getCreationDate(); ?></p>
-    </header>
-    <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
-  </article>
-<?php endforeach; ?>
+  <?php foreach ($recipes as $recipe): ?>
+    <article class="recipe">
+      <header>
+        <a href="/recipes/<?= $recipe->getId(); ?>">
+          <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
+        </a>
+        <p class="date"><?= $recipe->getCreationDate(); ?></p>
+      </header>
+      <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
+    </article>
+  <?php endforeach; ?>
+  <?php include_once './src/templates/footer.php'?>
+
 </body>
 </html>

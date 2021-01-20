@@ -15,13 +15,18 @@
   <div class="all">
     <a href="/recipes">⬅️ Retour aux recettes</a>
   </div>
-<h1>Un chef à la maison</h1>
-<article>
-  <header>
+  
+  <article class="recipe">
+    <div class="all">
+      <a href="/recipes">⬅️ Retour aux recettes</a>
+    </div>
+    <header>
     <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
-    <p><?= $recipe->getCreationDate(); ?></p>
+    <p class="date"><?= $recipe->getCreationDate(); ?></p>
   </header>
   <p><?=nl2br(htmlspecialchars($recipe->getContent())); ?></p>
 </article>
+<?php include_once './src/templates/footer.php'?>
+
 </body>
 </html>
