@@ -27,10 +27,10 @@
         <h1>Un chef à la maison</h1>
         <div>
           <?php if(isset($_SESSION['checkLog'])):  ?>
-          <a href="/logout">déconnexion</a>
-          <a href="/">Ajouter une recette</a>
+            <a href="/logout">déconnexion</a>
+            <a href="/">Ajouter une recette</a>
           <?php else:?>
-          <a href="/login">connection</a>
+            <a href="/login">connection</a>
           <?php endif ?>
           <a href="/signup">s'inscrire</a>
         </div>
