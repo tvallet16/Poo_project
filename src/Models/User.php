@@ -9,6 +9,8 @@ class User extends Model
     private int $id;
     private string $username;
     private string $passeword;
+    protected array $fillable = ['username', 'passeword'];
+
     public function getId(): int
     {
         return $this->id;

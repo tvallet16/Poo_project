@@ -21,6 +21,7 @@
   </style>
 </head>
 <body>
+    <a href="/signup">s'inscrire</a>
     <div class="header">
       <article>
         <img src="img/toc.png" alt="">

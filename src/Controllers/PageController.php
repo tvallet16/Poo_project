@@ -16,4 +16,8 @@ class PageController
     {
         new View('login');
     }
+    public function signupView()
+    {
+        new View('signup');
+    }
 }

@@ -12,6 +12,10 @@ Route::get('/recipes/{id}', 'RecipesController@show');
 Route::post('/log', 'LoginController@log');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/login', 'PageController@loginView');
+Route::get('/signup', 'PageController@signupView');
+Route::post('/signup', 'SignupController@createUser');
+
+
 
 
 
