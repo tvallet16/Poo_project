@@ -63,15 +63,13 @@ h1{
             margin-left: 13px;
             text-decoration: none;
             padding: 2px 20px 2px 20px;
-            // padding-bottom: 2px;
-
-            
 
             &:hover{
                 background-color: rgba(240, 112, 43, 0.331);
                 transition: 0.3s;
             }
         }
+
         .recipeB{
             width: 200px;
         }
@@ -187,6 +185,13 @@ h3{
 }
 
 footer{
+    height: 70px;
+    width: 100%;
     margin-top: 45px;
-    background-color: rgb(240, 112, 43);
+    background-color: rgba(65, 65, 65, 0.221);
+    border-top: 1px rgb(240, 112, 43) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }

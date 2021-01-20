@@ -192,6 +192,12 @@ h3::after {
 }
 
 footer {
+  height: 70px;
+  width: 100%;
   margin-top: 45px;
-  background-color: #f0702b;
+  background-color: rgba(65, 65, 65, 0.221);
+  border-top: 1px #f0702b solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
