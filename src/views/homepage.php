@@ -48,12 +48,14 @@
           <a href="/recipes/<?= $recipe->getId(); ?>">
             <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
           </a>
-          <p><?= $recipe->getCreationDate(); ?></p>
+          <p class="date"><?= $recipe->getCreationDate(); ?></p>
         </header>
         <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
       </article>
     <?php endforeach; ?>
 </section>
+
+
 </body>
 </html>
 

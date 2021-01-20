@@ -22,7 +22,7 @@
           <a href="/recipes/create" class="recipeB">Ajouter une recette</a>
           <?php else:?>
           <a href="/login">Connection</a>
-          <a href="#">S'inscrire</a>
+          <a href="/signup">S'inscrire</a>
           <?php endif ?>
         </div>
       </article>
@@ -38,7 +38,7 @@
       <a href="/recipes/<?= $recipe->getId(); ?>">
         <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
       </a>
-      <p><?= $recipe->getCreationDate(); ?></p>
+      <p class="date"><?= $recipe->getCreationDate(); ?></p>
     </header>
     <p><?= nl2br(htmlspecialchars($recipe->getContent())); ?></p>
   </article>

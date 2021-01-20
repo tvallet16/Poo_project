@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="header">
@@ -20,7 +21,7 @@
             <a href="/recipes/create" class="recipeB">Ajouter une recette</a>
             <?php else:?>
             <a href="/login">Connection</a>
-            <a href="#">S'inscrire</a>
+            <a href="/signup">S'inscrire</a>
             <?php endif ?>
           </div>
         </article>

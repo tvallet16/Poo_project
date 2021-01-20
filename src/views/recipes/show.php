@@ -11,14 +11,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="all">
-    <a href="/recipes">⬅️ Retour aux recettes</a>
+<div class="header">
+      <article>
+        <img src="../img/toc.png" alt="">
+        <h1>Un chef à la maison</h1>
+        <div>
+          <?php if(isset($_SESSION['checkLog'])):  ?>
+          <a href="/logout">Déconnexion</a>
+          <a href="/recipes/create" class="recipeB">Ajouter une recette</a>
+          <?php else:?>
+          <a href="/login">Connection</a>
+          <a href="/signup">S'inscrire</a>
+          <?php endif ?>
+        </div>
+      </article>
   </div>
-<h1>Un chef à la maison</h1>
-<article>
-  <header>
+  
+  <article class="recipe">
+    <div class="all">
+      <a href="/recipes">⬅️ Retour aux recettes</a>
+    </div>
+    <header>
     <h3><?= htmlspecialchars($recipe->getTitle()); ?></h3>
-    <p><?= $recipe->getCreationDate(); ?></p>
+    <p class="date"><?= $recipe->getCreationDate(); ?></p>
   </header>
   <p><?=nl2br(htmlspecialchars($recipe->getContent())); ?></p>
 </article>
